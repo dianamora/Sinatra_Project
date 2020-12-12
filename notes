@@ -1,0 +1,40 @@
+[] - User can create, read, update, and delete an order 
+
+Interface: 
+- User can view order form
+- User can submit order form
+- User can edit order
+- User can delete/cancel order
+
+User class 
+    x- attributes => name, password
+    - user signs up/logs in 
+    x- has many orders
+
+User controller and views
+    x- '/users/signup' => renders sign up form 
+    x- '/users/signup' => processes sign up form, creates user, post
+    - '/users/login' => renders login form
+    - '/users/login' => processes login form, post
+    - need to get sessions
+    - user can view their orders, '/users/:id/orders'
+
+Orders class 
+    x- attributes => address, item, item_price, total
+    x- order belongs to user
+
+Order controller and views
+    - '/orders/new' => renders new order form
+    - '/orders/' => submits order
+    - '/orders' => renders all orders
+    - '/orders/:id => renders one instance
+    - '/orders/:id/edit => renders update form for an instance 
+    - '/orders/:id => updates instance
+    - '/orders/:id:/delete' => deletes instance
+
+Where to start? 
+
+    x- set up classes
+    x- set up my database
+    - users controller
+    - orders controller
