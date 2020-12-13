@@ -28,6 +28,21 @@ class OrderController < ApplicationController
 
     #update
 
+    get '/orders/:id/edit' do
+        @order = Order.find(params[:id])
+        erb :'/orders/edit'
+    end
+
+    post '/orders/:id' do
+        @order = Order.find(params[:id])
+        @order.update(
+            address: params[:address], 
+            item: params[:item], 
+            item_price: params[:item_price], 
+            total: params[:total]
+            )
+            redirect "/orders/#{@order.id}"
+    end
 
     #delete
 

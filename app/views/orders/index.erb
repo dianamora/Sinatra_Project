@@ -1,8 +1,7 @@
 <% @orders.each do |order| %>
     Order Number: <%= order.id %>
     Address: <%= order.address %>
-    Total <% order.total %>
-    Username: <%= order.user.username %>
+    Total: <%= order.total %>
 
 
 <% end %>
