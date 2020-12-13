@@ -2,3 +2,8 @@ Address: <%= @order.address%><br>
 Item: <%= @order.item%><br>
 Price: <%= @order.item_price%><br>
 Total: <%= @order.total%><br>
+
+<form method="post" action="/orders/"<%= @order.id %>
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+</form>

@@ -7,7 +7,10 @@ class UserController < ApplicationController
     post '/users/signup' do
         #params[:username]
         #params[:password]
-        @user = User.create(username: params[:username], password: params[:password])
+        @user = User.create(
+            username: params[:username], 
+            password: params[:password]
+            )
         redirect "/users/#{@user.id}"
     end
 

@@ -5,7 +5,7 @@ class OrderController < ApplicationController
         erb :'orders/new'
     end
     
-    post '/orders' do #this is going to process our form
+    post '/orders/' do #this is going to process our form
         @order = Order.create(
             address: params[:address], 
             item: params[:item], 
@@ -21,7 +21,7 @@ class OrderController < ApplicationController
         erb :'/orders/show'
     end
 
-    get '/orders' do
+    get '/orders/' do
         @orders = Order.all #returns an array
         erb :'/orders/index'
     end
@@ -45,6 +45,10 @@ class OrderController < ApplicationController
     end
 
     #delete
-
+    delete '/orders/:id' do
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect '/orders/'
+    end
 
 end
