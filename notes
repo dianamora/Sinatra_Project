@@ -51,3 +51,8 @@ Authentication:
 1. Make password secure using bcrypt gem
 2. give user model a has_secure_password, available bc of bcrypt gem
 3. change our users table, password => password_digest
+
+user is logged in?
+-redirect to homepage
+-can't see the signup or login form if logged in
+
