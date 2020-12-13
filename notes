@@ -38,3 +38,16 @@ Where to start?
     x- set up my database
     - users controller
     - orders controller
+
+
+Sessions: 
+
+1. enable sessions
+2. utilize sessions hash in the methods that persist user data into applications
+
+
+Authentication: 
+
+1. Make password secure using bcrypt gem
+2. give user model a has_secure_password, available bc of bcrypt gem
+3. change our users table, password => password_digest
