@@ -11,8 +11,5 @@
 </form>
 <br></br>
 
-<form method="post" action="/orders/edit<%= @order.id %>">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Edit">
-</form>
+<a href="/orders/<%=@order.id %>/edit">Edit</a>
 
