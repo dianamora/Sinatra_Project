@@ -25,6 +25,10 @@ class OrderController < ApplicationController
     end
 
     #read
+    get '/orders/submit' do #what user sees after order is submitted
+        erb :'/orders/submit'
+    end
+
     get '/orders/:id' do
         @order = Order.find(params[:id])
         erb :'/orders/show'
@@ -62,6 +66,9 @@ class OrderController < ApplicationController
     redirect '/orders'
   
     end
+
+   
+   
 
     # delete '/orders/:id' do
     #     @order = Order.find(params[:id])
