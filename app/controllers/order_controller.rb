@@ -46,7 +46,7 @@ class OrderController < ApplicationController
 
     #delete
     delete '/orders/:id' do
-        binding.pry
+        # binding.pry
     @order = Order.find(params[:id])
     @order.destroy
     
