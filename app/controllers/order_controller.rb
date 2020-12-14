@@ -2,10 +2,16 @@ class OrderController < ApplicationController
 
     #create
     get '/orders/new' do #render the order form
-        erb :'orders/new'
+        if logged_in?
+            erb :'/orders/new'
+        else 
+            @error = "Please log in or sign up!"
+            erb :'users/login'
+        end 
     end
     
     post '/orders' do #this is going to process our form
+        if logged_in?
         @order = Order.create(
             address: params[:address], 
             item: params[:item], 
@@ -13,6 +19,9 @@ class OrderController < ApplicationController
             total: params[:total]
             )
            redirect "/orders/#{@order.id}"
+        else 
+            redirect '/users/login'
+        end
     end
 
     #read
