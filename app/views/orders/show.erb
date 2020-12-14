@@ -1,9 +1,18 @@
-Address: <%= @order.address%><br>
-Item: <%= @order.item%><br>
-Price: <%= @order.item_price%><br>
-Total: <%= @order.total%><br>
+<layout>
+<p>Address:<%= @order.address %><br></p>
+<p>Item:<%= @order.item %><br></p>
+<p>Price:<%= @order.item_price %><br></p>
+<p>Total price:<%= @order.total %><br></p>
+</layout>
 
-<form method="post" action="/orders/"<%= @order.id %>
+<form method="post" action="/orders/<%= @order.id %>">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="delete">
 </form>
+<br></br>
+
+<form method="post" action="/orders/edit<%= @order.id %>">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Edit">
+</form>
+

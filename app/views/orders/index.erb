@@ -1,7 +1,9 @@
+
 <% @orders.each do |order| %>
-    Order Number: <%= order.id %>
-    Address: <%= order.address %>
-    Total: <%= order.total %>
-
-
+    <li>
+    <p><b>Order Number: <%= order.id %></b></p>
+    <p>Address: <%= order.address %></p>
+    <p>Total: <%= order.total %></p>
+   </li>
 <% end %>
+<a href='/orders/:id/edit'>Edit an order</a>
