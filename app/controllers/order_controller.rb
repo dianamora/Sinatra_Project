@@ -12,12 +12,16 @@ class OrderController < ApplicationController
     
     post '/orders' do #this is going to process our form
         if logged_in?
-        @order = Order.create(
+        @order = current_user.orders.create(
             address: params[:address], 
             item: params[:item], 
             item_price: params[:item_price], 
             total: params[:total]
             )
+            
+            #hey your id is the current user's id
+            # @order.user_id = current_user.id
+           
            redirect "/orders/#{@order.id}"
         else 
             redirect '/users/login'
@@ -35,7 +39,7 @@ class OrderController < ApplicationController
     end
 
     get '/orders' do
-        @orders = Order.all #returns an array
+        @orders = current_user.orders #returns an array
         erb :'/orders/index'
     end
 
@@ -43,8 +47,13 @@ class OrderController < ApplicationController
 
     get '/orders/:id/edit' do
         @order = Order.find(params[:id])
-        erb :'/orders/edit'
+        if current_user == @order.user
+            erb :'/orders/edit'
+        else 
+            redirect '/users/welcome'
+        end
     end
+
 
     post '/orders/:id' do
         @order = Order.find(params[:id])
@@ -61,12 +70,16 @@ class OrderController < ApplicationController
     delete '/orders/:id' do
         # binding.pry
     @order = Order.find(params[:id])
+    if current_user == @order.user
     @order.destroy
     
     redirect '/orders'
+    else
+        redirect '/orders/welcome'
+    end
   
     end
-
+end
    
    
 
@@ -86,4 +99,3 @@ class OrderController < ApplicationController
     #     redirect '/orders'
     #     end
 
-end

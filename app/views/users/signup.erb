@@ -9,4 +9,8 @@
 </form>
 
 <br><br>
-<a href="/">Back</a>
+
+
+<%if flash[:error]%>
+<%=flash[:error]%>
+<%end%>

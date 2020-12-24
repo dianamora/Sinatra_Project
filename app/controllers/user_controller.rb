@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+    register Sinatra::Flash
 
     get '/users/signup' do
         erb :'users/signup'
@@ -7,6 +8,8 @@ class UserController < ApplicationController
     post '/users/signup' do
 
         if params[:username] == "" && params[:password] == ""
+            flash[:error] = "No account associated with username or password. Please create an account!"
+
             redirect "/users/signup"
         else
             @user = User.create(
