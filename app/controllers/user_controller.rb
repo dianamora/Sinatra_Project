@@ -39,6 +39,7 @@ class UserController < ApplicationController
             session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
+            flash[:error] = "No account associated with those credentials please try again."
             redirect '/users/login'
         end
     end
